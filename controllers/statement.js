@@ -12,9 +12,9 @@ const statementByDate = (request, response) => {
 
   const statement = customer.statement.filter(
     statement => 
-      statement.create_date.toDateString() ===
+      {statement.create_date.toDateString() ===
       new Date(dateFormat).toDateString()
-  )
+  })
   
   return response.status(201).json(customer.statement)
 

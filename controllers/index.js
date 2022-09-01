@@ -28,6 +28,16 @@ const account = (request, response) => {
   return response.status(201).json(customer)
 }
 
+const searchAll = (request, response) => {
+  const { manager } = request.headers;
+
+  if(manager === '7380') {
+    return response.status(200).send(customers)
+  }else {
+    return response.status(400).send({Error: "Access denied!"})
+  }
+}
+
 const update = (request, response) => {
   const { name } = request.body
   const { customer } = request
@@ -52,6 +62,7 @@ module.exports = {
   create,
   customers,
   account,
+  searchAll,
   update,
   remove
 }
